@@ -48,10 +48,15 @@ public class ListViewAdapterCliente extends BaseAdapter {
         if (v == null) {
             v = activity.getLayoutInflater().inflate(R.layout.item_cliente_view, viewGroup, false);
         }
+        //Recupera um objeto cliente da posição i
         Cliente cliente = listaClientes.get(i);
+
+        //Recupera os objetos da Listview
         TextView clienteId = (TextView) v.findViewById(R.id.textViewClienteId);
         TextView nome = (TextView) v.findViewById(R.id.textViewNome);
         TextView cpf = (TextView) v.findViewById(R.id.textViewCpf);
+
+        //Seta os valores
         clienteId.setText(cliente.getClienteId());
         nome.setText(cliente.getNome());
         cpf.setText(cliente.getCpf());
@@ -77,5 +82,4 @@ public class ListViewAdapterCliente extends BaseAdapter {
         listaClientes.remove(posicao); //remove o item na posicao desejada
         notifyDataSetChanged();
     }
-
 }
