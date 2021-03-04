@@ -3,12 +3,9 @@ package com.exemplo.listview_cliente;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -57,6 +54,18 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity2.class);
         // Abre a segunda tela
         startActivityForResult(intent, 0);
+    }
+
+    /**
+     * Evento do botão remover cliente
+     *
+     * @param v
+     */
+    public void onClickBotaoRemover(View v) {
+        // Retorna a posição da seleção
+        int position = listView.getPositionForView((View) v.getParent());
+        // Apaga o elemento da lista da posição
+        adapter.removerCliente(position);
     }
 
     /**
