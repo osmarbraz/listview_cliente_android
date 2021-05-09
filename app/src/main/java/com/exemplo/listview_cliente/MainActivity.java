@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -44,6 +45,11 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
     }
 
+    public void onItemClick(View view, int position) {
+        Cliente cliente = adapter.getItem(position);
+        Toast.makeText(this, "Clique no cliente: " + cliente.getNome() + " linha número: " + position, Toast.LENGTH_SHORT).show();
+    }
+
     /**
      * Evento do botão adicionar cliente
      *
@@ -65,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         // Retorna a posição da seleção
         int position = listView.getPositionForView((View) v.getParent());
         // Apaga o elemento da lista da posição
-        adapter.removerCliente(position);
+        adapter.remover(position);
     }
 
     /**
@@ -96,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                 String nome = data.getExtras().getString("nome");
                 String cpf = data.getExtras().getString("cpf");
                 //Adiciona os dados na lsita
-                adapter.adicionarCliente(new Cliente(clienteId, nome, cpf));
+                adapter.adicionar(new Cliente(clienteId, nome, cpf));
             }
         }
     }

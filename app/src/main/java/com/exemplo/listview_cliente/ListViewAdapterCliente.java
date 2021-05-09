@@ -28,7 +28,7 @@ public class ListViewAdapterCliente extends BaseAdapter {
     }
 
     /**
-     * Retorna um elemnto de uma posição da lista
+     * Retorna um elemento de uma posição da lista
      * @param i Posição do elemento a ser retornado.
      * @return Um elemento da posição i
      */
@@ -42,6 +42,13 @@ public class ListViewAdapterCliente extends BaseAdapter {
         return 0;
     }
 
+    /**
+     * Atualiza os componentes da lista
+     * @param i
+     * @param view
+     * @param viewGroup
+     * @return
+     */
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         View v = view;
@@ -49,12 +56,12 @@ public class ListViewAdapterCliente extends BaseAdapter {
             v = activity.getLayoutInflater().inflate(R.layout.item_cliente_view, viewGroup, false);
         }
         Cliente cliente = listaClientes.get(i);
-        TextView clienteId = (TextView) v.findViewById(R.id.textViewClienteId);
-        TextView nome = (TextView) v.findViewById(R.id.textViewNome);
-        TextView cpf = (TextView) v.findViewById(R.id.textViewCpf);
-        clienteId.setText(cliente.getClienteId());
-        nome.setText(cliente.getNome());
-        cpf.setText(cliente.getCpf());
+        TextView textViewClienteId = (TextView) v.findViewById(R.id.textViewClienteId);
+        TextView textViewNome = (TextView) v.findViewById(R.id.textViewNome);
+        TextView textViewCpf = (TextView) v.findViewById(R.id.textViewCpf);
+        textViewClienteId.setText(cliente.getClienteId());
+        textViewNome.setText(cliente.getNome());
+        textViewCpf.setText(cliente.getCpf());
         return v;
     }
 
@@ -63,7 +70,7 @@ public class ListViewAdapterCliente extends BaseAdapter {
      *
      * @param novo Um cliente
      */
-    public void adicionarCliente(Cliente novo) {
+    public void adicionar(Cliente novo) {
         listaClientes.add(novo); //adiciona o item na ultima posicao
         notifyDataSetChanged();// notifica que meus items foi alterado
     }
@@ -73,7 +80,7 @@ public class ListViewAdapterCliente extends BaseAdapter {
      *
      * @param posicao Posição do cliente a ser excluído
      */
-    public void removerCliente(int posicao) {
+    public void remover(int posicao) {
         listaClientes.remove(posicao); //remove o item na posicao desejada
         notifyDataSetChanged();
     }
