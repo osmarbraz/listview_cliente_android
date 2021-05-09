@@ -22,31 +22,39 @@ public class MainActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        //Associa os componentes aos atributos
+        // Associa os componentes aos atributos
         editTextClienteId = findViewById(R.id.editTextClienteId);
         editTextNome = findViewById(R.id.editTextNome);
         editTextCpf = findViewById(R.id.editTextCpf);
     }
 
+    /**
+     * Evento do botão salvar.
+     * @param v
+     */
     public void onClickBotaoSalvar(View v) {
-        //Retorna os dados do cliente
+        // Retorna os dados do cliente
         Intent data = new Intent();
         Bundle parms = new Bundle();
-        //Se o id do cliente é vazio retorna cancelado
+        // Se o id do cliente é vazio retorna cancelado
         if (editTextClienteId.getText().toString().equals("")) {
             setResult(RESULT_CANCELED);
         } else {
-            //Dados preenchido
+            // Dados preenchido
             parms.putString("clienteId", editTextClienteId.getText().toString());
             parms.putString("nome", editTextNome.getText().toString());
             parms.putString("cpf", editTextCpf.getText().toString());
             data.putExtras(parms);
             setResult(RESULT_OK, data);
         }
-        //Fecha a janela
+        // Fecha a janela
         finish();
     }
 
+    /**
+     * Evento do botão voltar.
+     * @param v
+     */
     public void onClickBotaoVoltar(View v) {
         setResult(RESULT_CANCELED);
         finish();

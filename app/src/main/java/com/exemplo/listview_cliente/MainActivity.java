@@ -25,29 +25,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Associa os componentes da interface as propriedades
+        // Associa os componentes da interface as propriedades
         botaoAdicionar = findViewById(R.id.buttonAdicionar);
         buttonFechar = findViewById(R.id.buttonFechar);
 
-        //Adiciona alguns clientes para popular a lista
+        // Adiciona alguns clientes para popular a lista
         listaCliente.add(new Cliente("1", "João", "123"));
         listaCliente.add(new Cliente("2", "Carlos", "223"));
         listaCliente.add(new Cliente("3", "Pedro", "323"));
         listaCliente.add(new Cliente("4", "Luiz", "534"));
 
-        //Cria o Adapter para a lista de cliente e o listView
+        // Cria o Adapter para a lista de cliente e o listView
         adapter = new ListViewAdapterCliente(listaCliente, this);
 
-        //Recupera o listView
+        // Recupera o listView
         listView = (ListView) findViewById(R.id.listView);
 
-        //Seta o adapter do listView
+        // Seta o adapter do listView
         listView.setAdapter(adapter);
     }
 
-    public void onItemClick(View view, int position) {
-        Cliente cliente = adapter.getItem(position);
-        Toast.makeText(this, "Clique no cliente: " + cliente.getNome() + " linha número: " + position, Toast.LENGTH_SHORT).show();
+    public void onItemClick(View view, int posicao) {
+        Cliente cliente = adapter.getItem(posicao);
+        Toast.makeText(this, "Clique no cliente: " + cliente.getNome() + " linha número: " + posicao, Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
      * @param v
      */
     public void onClickBotaoAdicionar(View v) {
-        //Recupera o intennt para a tela2
+        // Recupera o intennt para a tela2
         Intent intent = new Intent(this, MainActivity2.class);
         // Abre a segunda tela
         startActivityForResult(intent, 0);
@@ -92,16 +92,16 @@ public class MainActivity extends AppCompatActivity {
      */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //Executa no retorno das telas
+        // Executa no retorno das telas
         super.onActivityResult(requestCode, resultCode, data);
-        //Se o retorno foi Ok
+        // Se o retorno foi Ok
         if (resultCode == RESULT_OK) {
-            //Verifica se os dados foram preenchidos
+            // Verifica se os dados foram preenchidos
             if (data.hasExtra("clienteId") && data.hasExtra("nome") && data.hasExtra("cpf")) {
                 String clienteId = data.getExtras().getString("clienteId");
                 String nome = data.getExtras().getString("nome");
                 String cpf = data.getExtras().getString("cpf");
-                //Adiciona os dados na lsita
+                // Adiciona os dados na lsita
                 adapter.adicionar(new Cliente(clienteId, nome, cpf));
             }
         }

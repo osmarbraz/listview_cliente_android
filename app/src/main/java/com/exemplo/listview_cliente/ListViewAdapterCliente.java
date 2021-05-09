@@ -37,8 +37,13 @@ public class ListViewAdapterCliente extends BaseAdapter {
         return listaClientes.get(i);
     }
 
+    /**
+     * Obtêm os dados na posição de clique
+     * @param id Posição do item.
+     * @return
+     */
     @Override
-    public long getItemId(int i) {
+    public long getItemId(int id) {
         return 0;
     }
 
@@ -71,8 +76,10 @@ public class ListViewAdapterCliente extends BaseAdapter {
      * @param novo Um cliente
      */
     public void adicionar(Cliente novo) {
-        listaClientes.add(novo); //adiciona o item na ultima posicao
-        notifyDataSetChanged();// notifica que meus items foi alterado
+        // Adiciona o item na ultima posicao
+        listaClientes.add(novo);
+        // Notifica o ListView que os dados foram atualizados
+        notifyDataSetChanged();
     }
 
     /**
@@ -81,8 +88,9 @@ public class ListViewAdapterCliente extends BaseAdapter {
      * @param posicao Posição do cliente a ser excluído
      */
     public void remover(int posicao) {
-        listaClientes.remove(posicao); //remove o item na posicao desejada
+        // Remove o item na posicao desejada
+        listaClientes.remove(posicao);
+        // Notifica o ListView que os dados foram atualizados
         notifyDataSetChanged();
     }
-
 }
