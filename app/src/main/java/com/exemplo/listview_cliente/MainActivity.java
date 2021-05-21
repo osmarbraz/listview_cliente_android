@@ -3,10 +3,12 @@ package com.exemplo.listview_cliente;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -45,11 +47,6 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
     }
 
-    public void onItemClick(View view, int posicao) {
-        Cliente cliente = adapter.getItem(posicao);
-        Toast.makeText(this, "Clique no cliente: " + cliente.getNome() + " linha número: " + posicao, Toast.LENGTH_SHORT).show();
-    }
-
     /**
      * Evento do botão adicionar cliente
      *
@@ -62,16 +59,11 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(intent, 0);
     }
 
-    /**
-     * Evento do botão remover cliente
-     *
-     * @param v
-     */
     public void onClickBotaoRemover(View v) {
         // Retorna a posição da seleção
-        int position = listView.getPositionForView((View) v.getParent());
+        int posicao = listView.getPositionForView((View) v.getParent());
         // Apaga o elemento da lista da posição
-        adapter.remover(position);
+        adapter.remover(posicao);
     }
 
     /**
