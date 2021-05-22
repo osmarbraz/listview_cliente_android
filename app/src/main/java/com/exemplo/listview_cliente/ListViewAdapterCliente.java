@@ -50,18 +50,18 @@ public class ListViewAdapterCliente extends BaseAdapter {
 
     /**
      * Atualiza os componentes da lista
-     * @param i
+     * @param posicao
      * @param view
      * @param viewGroup
      * @return
      */
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(int posicao, View view, ViewGroup viewGroup) {
         View v = view;
         if (v == null) {
             v = activity.getLayoutInflater().inflate(R.layout.item_cliente_view, viewGroup, false);
         }
-        Cliente cliente = listaClientes.get(i);
+        Cliente cliente = listaClientes.get(posicao);
         TextView textViewClienteId = (TextView) v.findViewById(R.id.textViewClienteId);
         TextView textViewNome = (TextView) v.findViewById(R.id.textViewNome);
         TextView textViewCpf = (TextView) v.findViewById(R.id.textViewCpf);
@@ -77,7 +77,7 @@ public class ListViewAdapterCliente extends BaseAdapter {
      * @param novo Um cliente
      */
     public void adicionar(Cliente novo) {
-        // Adiciona o item na ultima posicao
+        // Adiciona o item na última posição
         listaClientes.add(novo);
         // Notifica o ListView que os dados foram atualizados
         notifyDataSetChanged();
@@ -89,7 +89,7 @@ public class ListViewAdapterCliente extends BaseAdapter {
      * @param posicao Posição do cliente a ser excluído
      */
     public void remover(int posicao) {
-        // Remove o item na posicao desejada
+        // Remove o item na posição desejada
         listaClientes.remove(posicao);
         // Notifica o ListView que os dados foram atualizados
         notifyDataSetChanged();

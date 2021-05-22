@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
      * @param v
      */
     public void onClickBotaoAdicionar(View v) {
-        // Recupera o intennt para a tela2
+        // Recupera o intent para a tela2
         Intent intent = new Intent(this, MainActivity2.class);
         // Abre a segunda tela
         startActivityForResult(intent, 0);
